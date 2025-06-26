@@ -1,0 +1,23 @@
+
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+header { background: #111; color: #fff; padding: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+header img.logo { height: 50px; }
+.menu { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
+.menu li a { color: white; text-decoration: none; }
+.carrossel img { width: 100%; display: none; height: 300px; object-fit: cover; }
+.carrossel img.ativo { display: block; }
+.cards { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px; }
+.card { background: white; padding: 10px; border-radius: 8px; width: 30%; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+.card img { width: 100%; border-radius: 4px; }
+footer { background: #111; color: white; text-align: center; padding: 10px; margin-top: 30px; }
+.dark { background: #121212; color: white; }
+.dark .card { background: #1e1e1e; }
+.hidden { display: none; }
+button { cursor: pointer; padding: 5px 10px; }
+select, input, textarea { margin: 5px 0; padding: 5px; width: 100%; }
+form { max-width: 400px; margin: 0 auto; }
+#login-container { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8); align-items: center; justify-content: center; z-index: 999; }
+#login-container form { background: white; padding: 20px; border-radius: 10px; }
+.whatsapp-btn { position: fixed; bottom: 20px; right: 20px; font-size: 24px; text-decoration: none; }
+#cookies { position: fixed; bottom: 0; width: 100%; background: #333; color: white; padding: 10px; display: none; text-align: center; }
