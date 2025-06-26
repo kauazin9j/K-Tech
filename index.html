@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>K-Tech | Loja de Computadores Gamer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="login-container" class="modal">
+    <form id="login-form">
+      <h2>🔐 Login</h2>
+      <input type="text" id="login-usuario" placeholder="Usuário" required>
+      <input type="password" id="login-senha" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <div id="admin-panel" class="hidden">
+    <header>
+      <h2>Painel Admin</h2>
+      <button onclick="logout()">Sair</button>
+    </header>
+    <section>
+      <h3>➕ Cadastrar Produto</h3>
+      <form id="form-produto">
+        <input type="text" id="nome-produto" placeholder="Nome do Produto" required>
+        <input type="number" id="preco-produto" placeholder="Preço" required>
+        <select id="categoria-produto">
+          <option value="ryzen">Ryzen</option>
+          <option value="intel">Intel</option>
+        </select>
+        <input type="text" id="imagem-produto" placeholder="URL da Imagem">
+        <button type="submit">Cadastrar</button>
+      </form>
+
+      <h3>📋 Produtos Cadastrados</h3>
+      <table id="tabela-produtos">
+        <thead><tr><th>Nome</th><th>Preço</th><th>Categoria</th><th>Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+
+  <div id="site-content">
+    <header>
+      <img src="https://i.postimg.cc/dVNf22gM/Chat-GPT-Image-23-de-jun-de-2025-04-35-00.png" class="logo">
+      <ul class="menu">
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#monte-pc">Monte seu PC</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="#" onclick="mostrarLogin()">🔐 Login</a></li>
+      </ul>
+      <button onclick="alternarModo()">🌙</button>
+    </header>
+
+    <div class="carrossel">
+      <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1350&q=80" class="ativo">
+      <img src="https://images.unsplash.com/photo-1587206660028-cf426f6f739e?auto=format&fit=crop&w=1350&q=80">
+      <img src="https://images.unsplash.com/photo-1615880488284-499b5df57f8b?auto=format&fit=crop&w=1350&q=80">
+    </div>
+
+    <section class="produtos" id="produtos">
+      <h2>🔥 Ofertas</h2>
+      <select id="filtro" onchange="filtrarProdutos()">
+        <option value="todos">Todos</option>
+        <option value="ryzen">Ryzen</option>
+        <option value="intel">Intel</option>
+      </select>
+      <div class="cards" id="lista-produtos">
+        <div class="card" data-categoria="ryzen">
+          <img src="https://i.postimg.cc/CLY9SLb2/images-5.jpg">
+          <h3>PC Gamer Ryzen 5</h3>
+          <p>R$ 3.499,00</p>
+          <button onclick="adicionarAoCarrinho('Ryzen 5', 3499)">Comprar</button>
+        </div>
+        <div class="card" data-categoria="intel">
+          <img src="https://i.postimg.cc/4N5qdk5x/images-6.jpg">
+          <h3>PC Intel Core i5</h3>
+          <p>R$ 3.999,00</p>
+          <button onclick="adicionarAoCarrinho('Intel i5', 3999)">Comprar</button>
+        </div>
+        <div class="card" data-categoria="intel">
+          <img src="https://i.postimg.cc/3r2zsD0p/images-7.jpg">
+          <h3>PC Intel Core i9</h3>
+          <p>R$ 5.999,00</p>
+          <button onclick="adicionarAoCarrinho('Intel i9', 5999)">Comprar</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="carrinho">
+      <h2>🛒 Carrinho</h2>
+      <div id="itens-carrinho"></div>
+    </section>
+
+    <section id="monte-pc">
+      <h2>🛠️ Monte seu PC</h2>
+      <form onsubmit="event.preventDefault(); alert('Simulação enviada!')">
+        <select><option>Escolha o Processador</option><option>Ryzen 5</option><option>Intel i5</option></select>
+        <select><option>Placa de Vídeo</option><option>GTX 1660</option><option>RTX 3060</option></select>
+        <select><option>Memória RAM</option><option>8GB</option><option>16GB</option></select>
+        <button type="submit">Enviar Configuração</button>
+      </form>
+    </section>
+
+    <section id="avaliacoes">
+      <h2>⭐ Avaliações</h2>
+      <p><span class="estrela">★★★★★</span> Produto excelente! Recomendo.</p>
+      <p><span class="estrela">★★★★☆</span> Muito bom, só faltou SSD maior.</p>
+    </section>
+
+    <section id="sobre">
+      <h2>🏢 Sobre a Loja</h2>
+      <p>Somos a K-Tech, especialista em PCs de alto desempenho. Nosso compromisso é entregar qualidade com suporte personalizado.</p>
+    </section>
+
+    <section id="contato">
+      <h2>📨 Contato</h2>
+      <form onsubmit="enviarMensagem(event)">
+        <input type="text" id="nome" placeholder="Seu nome" required>
+        <input type="email" id="email" placeholder="Seu e-mail" required>
+        <textarea id="mensagem" placeholder="Mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>Pix | Boleto | Cartão</p>
+      <p>© 2025 K-Tech Informática</p>
+    </footer>
+  </div>
+
+  <a href="https://wa.me/55SEUNUMERO" class="whatsapp-btn">💬</a>
+  <div id="cookies"><p>Usamos cookies para melhorar sua experiência. <button onclick="aceitarCookies()">Aceitar</button></p></div>
+
+  <script src="admin.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
